@@ -14,11 +14,10 @@ def select_config_folder():
     folder_selected = filedialog.askdirectory(title="Select Configuration Folder")
     if folder_selected:
         config_file_path = os.path.join(folder_selected, 'window_positions.json')
-        # Проверяем, существует ли файл конфигурации, если нет - создаем пустой JSON файл
         if not os.path.exists(config_file_path):
             try:
                 with open(config_file_path, 'w') as file:
-                    json.dump({}, file)  # Создаем пустой JSON файл
+                    json.dump({}, file)
             except PermissionError:
                 messagebox.showerror("Permission Error", "Не удалось создать файл конфигурации из-за ограничений доступа.")
                 exit()
